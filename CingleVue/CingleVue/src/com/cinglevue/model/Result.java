@@ -13,7 +13,7 @@ import org.eclipse.persistence.nosql.annotations.Field;
 import org.eclipse.persistence.nosql.annotations.NoSql;
 
 /**
- * Result,
+ * Result, Store a Result set of a School for particular Subject
  * @author ravinda
  *
  */

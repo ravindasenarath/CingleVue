@@ -8,7 +8,7 @@ import org.eclipse.persistence.nosql.annotations.DataFormatType;
 import org.eclipse.persistence.nosql.annotations.NoSql;
 
 /**
- * Subject, 
+ * Subject, Store subject details
  * @author ravinda
  *
  */

@@ -6,6 +6,8 @@ import com.cinglevue.model.Result;
 
 /**
  * 
+ * Iterface class for access Result Object
+ * 
  * @author ravinda
  *
  */

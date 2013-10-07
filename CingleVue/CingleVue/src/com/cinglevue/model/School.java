@@ -9,7 +9,7 @@ import org.eclipse.persistence.nosql.annotations.NoSql;
 
 
 /**
- * School, store as a JSON object
+ * School, store school details
  * @author ravinda
  *
  */
