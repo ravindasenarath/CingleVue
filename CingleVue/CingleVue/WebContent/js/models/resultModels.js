@@ -1,19 +1,19 @@
-		
+//*************************************************************
+var Result = Backbone.Model.extend({
 
-		var Result = Backbone.Model.extend({
+	initialize : function() {
+		console.log("Movie model created");
+	}
 
-			initialize : function() {
-				console.log("Movie model created");
-			}
+});
 
-		});
-		
-		var ResultList = Backbone.Collection.extend({
-			model : Result,
-			url : 'rest/result/get/Reading',
+// *************************************************************
+var ResultList = Backbone.Collection.extend({
+	model : Result,
+	url : 'rest/result/get/Reading',
 
-			initialize : function() {
-				console.log("Collection Init");
-			}
+	initialize : function() {
+		console.log("Collection Init");
+	}
 
-		});
+});
