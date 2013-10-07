@@ -10,15 +10,13 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	
 	<!-- External JS include -->
-	<script type="text/javascript" src="lib/underscore-min.js"></script>
-	<script type="text/javascript" src="lib/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="lib/bootstrap.min.js"></script>
-	<script type="text/javascript" src="lib/backbone-min.js"></script>
+	<script type="text/javascript" src="js/ext/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/ext/underscore-min.js"></script>
+	<script type="text/javascript" src="js/ext/backbone-min.js"></script>
+	<script type="text/javascript" src="js/ext/bootstrap.min.js"></script>
 	
-	<!-- <script type="text/javascript" src="js/models/resultModels.js"></script>
-	<script type="text/javascript" src="js/views/resultViews.js"></script>
-	<script type="text/javascript" src="js/views/dropDownView.js"></script>
-	<script type="text/javascript" src="js/main.js"></script> -->
+	<script src="js/utils.js"></script>
+	<script src="js/main.js"></script>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -44,147 +42,6 @@
 	</table>
 	
 	<div id="dropdown-container" class="btn-group"></div>
-
-	<script type="text/template" id="template-movieItem">
-			<td id="name"><%=school.name%></td>
-			<td id="y3"><%=y3%></td>
-			<td id="y5"><%=y5%></td>
-			<td id="y7"><%=y7%></td>
-			<td id="y9"><%=y9%></td>
-			<td id="rawGainY3ToY5"><%=rawGainY3ToY5%></td>
-			<td id="factoredGainY3ToY5"><%=factoredGainY3ToY5%></td>
-			<td id="cLGGainY3ToY5"><%=cLGGainY3ToY5%></td>
-			<td id="gainInGainY3ToY5"><%=gainInGainY3ToY5%></td>
-	</script>
-	
-	<script type="text/template" id="template-dropDown">
-		<select id="subject-dropdown" >
-			<option value="Spelling">Spelling</option>
-			<option value="Numerecy">Numerecy</option>
-			<option value="Reading">Reading</option>
-        </select>
-	</script>
-	
-
-	<script type="text/javascript">
-		//*************************************************************
-		var Result = Backbone.Model.extend({
-			//url : 'rest/result/get/Numeracy',
-
-			initialize : function() {
-				console.log("Movie model created");
-			}
-
-		});
-
-		//*************************************************************
-		var ResultList = Backbone.Collection.extend({
-			model : Result,
-			url : 'rest/result/get/Reading',
-
-			initialize : function() {
-				console.log("Collection Init");
-			}
-
-		});
-
-		//*************************************************************
-		
-		var ResultListView = Backbone.View.extend({
-			type : "ResultListView",
-			el : "#container-movieList",
-			//collection:
-			initialize : function() {
-				console.log("Initializing MovieListView");
-				this.collection.on('change',this.render,this);
-				_.bindAll(this, "render");
-				this.collection.fetch({
-					success : this.render
-				});
-			},
-
-			render : function() {
-				_.each(this.collection.models, this.processMovie, this);
-			},
-
-			processMovie : function(movie) {
-				var childResultItemView = new ResultItemView({
-					model : movie
-				});
-				childResultItemView.render();
-				this.$el.append(childResultItemView.el);
-			}
-		});
-
-		//*************************************************************
-		var ResultItemView = Backbone.View.extend({
-			type : "ResultItemView",
-			template : _.template($("#template-movieItem").html()),
-			tagName : "tr",
-			className : "",
-			//el :
-			//model :
-
-			initialize : function() {
-				console.log("Initialize Item view");
-			},
-
-			render : function() {
-				console.log("Success call back to view render");
-				this.$el.empty();
-				var outputHtml = this.template(this.model.toJSON());
-				this.$el.html(outputHtml);
-				return this;
-			},
-
-			modelChanged : function(model, changes) {
-				this.render();
-			},
-
-		});
-		
-		var DropDownView = Backbone.View.extend({
-			
-			type : "DropDownView",
-			el : "#dropdown-container",
-			template : _.template($("#template-dropDown").html()),
-			tagName : "Select",
-			className : "",
-			
-			initialize : function() {
-				console.log("Initialize DropDownView");
-			},
-			
-			events : {
-				  "change #subject-dropdown" : "dropdownChange"
-			},
-			
-			render : function() {
-				var outputHtml = this.template();
-				this.$el.html(outputHtml);
-				return this;
-			},
-			
-			dropdownChange : function(e) {
-				console.log("drop down changed");
-				console.log(e.target.value);
-			}
-			
-		});
-
-		//*************************************************************
-
-		var resultList = new ResultList();
-
-		var resultListView = new ResultListView({
-			collection : resultList
-		});
-		resultListView.render();
-		
-		var dropDownView = new DropDownView();
-		dropDownView.render();
-
-	</script>
 </body>
 
 </html>
