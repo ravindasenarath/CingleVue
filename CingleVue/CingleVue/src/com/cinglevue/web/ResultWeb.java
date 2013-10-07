@@ -1,4 +1,4 @@
-package com.cinglevue.service;
+package com.cinglevue.web;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -21,9 +21,9 @@ import com.cinglevue.model.Subject;
  *
  */
 @Path("/result")
-public class ResultService {
+public class ResultWeb {
 	
-	static Logger log = Logger.getLogger(ResultService.class.getName());
+	static Logger log = Logger.getLogger(ResultWeb.class.getName());
 	
 	/**
 	 * Return JSON object of results for the requested subject.
