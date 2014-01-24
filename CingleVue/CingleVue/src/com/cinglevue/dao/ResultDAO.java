@@ -16,5 +16,3 @@ public interface ResultDAO {
 	List<Result> getResult(String school);
 	
 }
-
-//testing 2

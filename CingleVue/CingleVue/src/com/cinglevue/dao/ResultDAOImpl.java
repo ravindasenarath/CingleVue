@@ -15,8 +15,6 @@ import com.cinglevue.model.Result;
  * MongoDB implementation of ResultDAO.
  * 
  * @author ravinda
-
- * testing 3
  *
  */
 public class ResultDAOImpl implements ResultDAO {
